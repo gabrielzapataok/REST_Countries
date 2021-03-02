@@ -2,10 +2,130 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+    /*APARENCIAS DESHABILITADAS*/
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    text-decoration: none;
 }
+body{background: #FAFAFA;}
+a, a:visited, a::selection, a:focus, a:visited{color: black;}
+
+/*HEADER*/
+
+header{
+    height: 80px;
+    display: flex;
+    padding: 0px 75px;
+    justify-content: space-between;
+    background: white;
+    box-shadow: 0 0 10px hsl(0, 0%, 90%);
+    align-items: center;
+}
+h1{/*Encabezado*/
+    font-size: 24px;
+}
+button{/*darkMode*/
+    height: 100%;
+    border: none;
+    background:none;
+    color: black;
+    font-weight: 600;
+    font-size: 16px;
+}
+button:focus{
+    outline: none;
+}
+
+/*BARRA DE NAVEGACION*/
 nav{
     display: flex;
     justify-content: space-between;
-    padding: 16px;
-    background: rgb(40,40,40)
+    padding: 48px calc( 75px / 2 );
+}
+input{/*Buscador*/
+    width: 480px;
+    height: 56px;
+    padding: 0 30px;
+    font-size: 14px;
+    box-shadow: 0 0 10px hsl(0, 0%, 90%);
+    border-radius: 5px;
+    border: none;
+}
+input:focus{
+    outline: none;
+}
+select{/*Selector de region*/
+    width: 200px;
+    padding: 0 30px;
+    font-size: 14px;
+    box-shadow: 0 0 10px hsl(0, 0%, 90%);
+    border-radius: 5px;
+    border: none;
+}
+select:focus{
+    outline: none;
+}
+select > option { /*CAMBIAR ANCHO*/ }
+
+/*SECCION PRNCIPAL*/
+
+#container{
+    width: calc(100% - 75px);
+    margin: auto;
+}
+
+/*LISTA DE PAISES*/
+
+#lista{
+    display: flex;
+    flex-wrap: wrap;
+}
+li{ /*container para cada tarjeta*/
+    list-style: none;
+    width: 25%;
+    height: calc(336px + 75px);
+    display: flex;
+    justify-content: center;
+}
+
+/* TARJETA */
+
+article{ 
+    height: 336px;
+    width: 264px;
+    box-shadow: 0 0 10px hsl(0, 0%, 90%);
+    border-radius: 5px;
+}
+.image-card{ /*container bandera*/
+    background: rgb(230,230,230);
+    height: calc(100% - 176px);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image-card > img{ /*bandera*/
+    width: 100%;
+}
+.content-card{ /*Container de informacion*/
+    height: 176px;
+}
+.content-card > .content{ /*datos*/
+    height: 24px;
+    padding-left: 24px;
+    font-size: 14px;
+}
+.card-title{ /*Nombre del pais*/
+    font-size: 18px;
+    font-weight: 800;
+    padding-left: 24px;
+    margin-top: 14px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+}
+span { /*propiedades*/
+    font-weight: 600;
 }

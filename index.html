@@ -3,24 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>REST</title>
 </head>
 <body>
-    <nav>
-        <div>
-            <input id="inputSearch" type="text" placeholder="search">
-        </div>
-        <select name="select" id="select">
-            <option value="All">All</option>
-            <option value="Asia">Asia</option>
-            <option value="Africa">Africa</option>
-            <option value="Europe">Europe</option>
-            <option value="Oceania">Oceania</option>
-            <option value="Americas">Americas</option>
-        </select>
-    </nav>
-    <section id="container"><!--DATA--></section>
+    <header>
+        <h1>Where in the world?</h1>
+        <button>DarkMode</button>
+    </header>
+    <section id="container">
+        <nav>
+            <div>
+                <input id="inputSearch" type="text" placeholder="search">
+            </div>
+            <select name="select" id="select">
+                <option value="All">All</option>
+                <option value="Asia">Asia</option>
+                <option value="Africa">Africa</option>
+                <option value="Europe">Europe</option>
+                <option value="Oceania">Oceania</option>
+                <option value="Americas">Americas</option>
+            </select>
+        </nav>
+        <ul id="lista"><!--DATA--></ul>
+    </section>
     <script src="index.js"></script>
 </body>
 </html>

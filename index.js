@@ -3,12 +3,23 @@ const select = document.getElementById('select')
 
 //Funcion que crea un nodo para el DOM
 function createACard(item){
-    const card = document.createElement('article')
+    const card = document.createElement('li')
     card.setAttribute('class','card')
     card.innerHTML = `
-        <a href=country.html?name=${item.alpha3Code}>
-            <p>${item.name}</p>
-        </a>`
+    <article>
+        <a class="a" href=country.html?name=${item.alpha3Code}>
+            <div class="image-card">
+                <img src = "${item.flag}">
+            </div>
+            <div class="content-card">
+                <div class="card-title"><p>${item.name}</p></div>
+                <div class="content"><p><span>population</span>: ${item.population}</p></div>
+                <div class="content"><p><span>region</span>: ${item.region}</p></div>
+                <div class="content"><p><span>capital</span>: ${item.capital}</p></div>
+            </div>
+        </a>
+    </article>
+    `
     return card
 }
 
@@ -26,21 +37,22 @@ function filtrarCantidad(resultados,cantidad){
 //funcion que pinta los nodos en el DOM
 async function pintarDatos( result ){
 
-    let container =document.getElementById('container')
-    container.innerHTML="CARGANDO"
+    //let lista =document.getElementById('container')
+    let lista = document.getElementById('lista')
+    lista.innerHTML="CARGANDO"
+    
 
     if(result.length <= 20) {//Si hay menos de 20 resultados
-        console.log('reultado es menor a 20')
         let primerosElementos = [] 
         await result.forEach(item => {
             let miElemento = createACard(item)
             primerosElementos.push(miElemento)
         });
         if(primerosElementos.length != 0){
-            container.innerHTML=""
-            container.append(...primerosElementos)
+            lista.innerHTML=""
+            lista.append(...primerosElementos)
         } else {
-            container.innerHTML="No hay resultados"
+            lista.innerHTML="No hay resultados"
         }
     } else {//Si hay mas de 20 resultados
 
@@ -50,8 +62,8 @@ async function pintarDatos( result ){
         let todosLosDatos = []
 
         //Pinto los datos en el container
-        container.innerHTML=""
-        container.append(...primerosResultados)
+        lista.innerHTML=""
+        lista.append(...primerosResultados)
 
         //Funcion de cargar todos los datos
         function cargarMas(){
@@ -59,15 +71,15 @@ async function pintarDatos( result ){
                 let miElemento = createACard(item)
                 todosLosDatos.push(miElemento)
             });
-            container.innerHTML=""
-            container.append(...todosLosDatos)
+            lista.innerHTML=""
+            lista.append(...todosLosDatos)
         }
         
         //Agrego el boton de cargar todos los datos
         const botonDeCargarMas = document.createElement('button')
         botonDeCargarMas.textContent='Cargar todos los datos'
         botonDeCargarMas.addEventListener('click',cargarMas)
-        container.append(botonDeCargarMas)
+        lista.append(botonDeCargarMas)
 
     }
     
