@@ -1,29 +1,80 @@
 const buscador = document.getElementById('inputSearch')
-const buscar = document.getElementById('search')
-const select = document.getElementById('select')s
+const select = document.getElementById('select')
 
 //Funcion que crea un nodo para el DOM
 function createACard(item){
     const card = document.createElement('article')
     card.setAttribute('class','card')
-    card.innerHTML = '<p>' + item.name + '</p>'
+    card.innerHTML = `
+        <a href=country.html?name=${item.alpha3Code}>
+            <p>${item.name}</p>
+        </a>`
     return card
 }
 
-//funcion que pinta todos los nodos en el DOM
-function pintarDatos( result ){
-    arrayDeElementos = []
-    result.forEach(item => {
-        let miElemento = createACard(item)
-        arrayDeElementos.push(miElemento)
-    });
-    document.getElementById('container').innerHTML=""
-    document.getElementById('container').append(...arrayDeElementos)
+//Funcion que retorna solo los primeros 20 resultados
+function filtrarCantidad(resultados,cantidad){
+    let resultadosFiltrados = []
+    console.log(`filtrando array`)
+    for (let i = 0; i < cantidad; i++) {
+        let element = createACard(resultados[i]);
+        resultadosFiltrados.push(element)
+    }
+    return resultadosFiltrados
+}
+
+//funcion que pinta los nodos en el DOM
+async function pintarDatos( result ){
+
+    let container =document.getElementById('container')
+    container.innerHTML="CARGANDO"
+
+    if(result.length <= 20) {//Si hay menos de 20 resultados
+        console.log('reultado es menor a 20')
+        let primerosElementos = [] 
+        await result.forEach(item => {
+            let miElemento = createACard(item)
+            primerosElementos.push(miElemento)
+        });
+        if(primerosElementos.length != 0){
+            container.innerHTML=""
+            container.append(...primerosElementos)
+        } else {
+            container.innerHTML="No hay resultados"
+        }
+    } else {//Si hay mas de 20 resultados
+
+        //Filtro solo los primeros 20 elementos
+        let primerosResultados = await filtrarCantidad(result,20)
+
+        let todosLosDatos = []
+
+        //Pinto los datos en el container
+        container.innerHTML=""
+        container.append(...primerosResultados)
+
+        //Funcion de cargar todos los datos
+        function cargarMas(){
+            result.forEach(item => {
+                let miElemento = createACard(item)
+                todosLosDatos.push(miElemento)
+            });
+            container.innerHTML=""
+            container.append(...todosLosDatos)
+        }
+        
+        //Agrego el boton de cargar todos los datos
+        const botonDeCargarMas = document.createElement('button')
+        botonDeCargarMas.textContent='Cargar todos los datos'
+        botonDeCargarMas.addEventListener('click',cargarMas)
+        container.append(botonDeCargarMas)
+
+    }
+    
 }
 
 //Funcion que trae los datos (completos o por continente)
 async function traerDatosContinente( selected ){
-    console.log('cargando archivos para '+ selected)
     if(selected != 'All'){
         const response = await fetch('https://restcountries.eu/rest/v2/region/' + selected )
         const responseJson = await response.json()
@@ -44,8 +95,7 @@ async function search( palabrasClave , selected ){
     datos = await traerDatosContinente( selected )
     let result = datos.filter( datos => datos.name.toLowerCase().indexOf( palabrasClave.toLowerCase() ) !=- 1 )
 
-    console.log( result )
-
+    //console.log( result )
     pintarDatos( result )
 
 }
@@ -60,5 +110,5 @@ function initSearch(){
 //pinto todos los datos
 search( '' , 'All') 
 
-buscar.addEventListener('click',initSearch)
-
+buscador.addEventListener('input',initSearch)
+select.addEventListener('change',initSearch)
