@@ -58,6 +58,7 @@ input:focus{
 }
 select{/*Selector de region*/
     width: 200px;
+    height: 56px;
     padding: 0 30px;
     font-size: 14px;
     box-shadow: 0 0 10px hsl(0, 0%, 90%);
@@ -128,4 +129,55 @@ article{
 }
 span { /*propiedades*/
     font-weight: 600;
+}
+
+/*Lista responsiva*/
+@media (max-width: 1250px){
+    li{ /*container para cada tarjeta*/
+        width: 33.33%;
+        height: calc(336px + 75px);
+    }
+}
+
+@media (max-width: 950px){
+    li{ /*container para cada tarjeta*/
+        width: 50%;
+        height: calc(336px + 75px);
+    }
+    nav{
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: calc(56px * 5);
+        padding: 0 calc( 75px / 2 );
+    }
+    input, select{/*Buscador*/
+        width: calc(100vw - 150px);
+    }
+    header h1{
+        font-size: .8em;
+    }
+    header button{
+        font-size: .8em;
+    }
+}
+@media (max-width: 650px){
+    li{ /*container para cada tarjeta*/
+        width: 100%;
+        height: calc(336px + 75px);
+    }
+}
+@media (max-width: 415px){
+    #container{
+        width: 100%;
+        margin: auto;
+    }
+    nav{
+        align-items: center;
+        width: 100%;
+        padding: 0px;
+    }
+    input , select{/*Buscador*/
+        width: 264px;
+        margin: 0 auto 0 auto;
+    }
 }
