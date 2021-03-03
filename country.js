@@ -23,7 +23,7 @@ function iterarArreglos(arr){
            stringHTML = stringHTML + link
         });
     } else {
-        stringHTML = '<span>nothing</span>'
+        document.getElementById('borders_title').innerHTML='<b>No hay bordes</b>'
     }
     return stringHTML
 }
@@ -52,7 +52,6 @@ async function pintarDatos(){
     currencies.innerHTML = iterarArreglosDeObjetos(datos.currencies)
     languages.innerHTML = iterarArreglosDeObjetos(datos.languages)
     borders.innerHTML = iterarArreglos(datos.borders)
-    // currencies (Iterar arrelgos de objetos)
 }
 
 function back(){
