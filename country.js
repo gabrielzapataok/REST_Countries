@@ -15,7 +15,9 @@ function iterarArreglos(arr){
         arr.forEach(item => {
            const link = `
             <a href="country.html?name=${item}">
-                ${item} 
+                <button id="border">
+                    ${item} 
+                </button>
             </a>
            `
            stringHTML = stringHTML + link

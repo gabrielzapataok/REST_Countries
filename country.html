@@ -1,35 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="country.css">
     <script src="country.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <main>
-        <section id="flagAndButton">
-            <div><button id="volverAtras">Atras</button></div>
-            <div><img alt="flag" id="flag"></img></div>
-        </section>
-        <section id="nameAndInfo">
-            <p id="nombre"><p>
+    <header>
+        <a href="index.html"><h1>Where in the world?</h1></a>
+        <button>DarkMode</button>
+    </header>
+    <nav>
+        <div>
+            <div>
+                <button id="volverAtras">Atras</button>
+            </div>
+        </div>
+    </nav>
+    <article>
+        <figure>
+            <img alt="flag" id="flag"></img>
+        </figure>
+        <section>
+            <div id="name-container">
+                <h2 id="nombre"></h2>
+            </div>
             <ul>
-                <li><p><span id="nativeName"></span></p> </li>
-                <li><p>Population: <span id="Population"></span></p> </li>
-                <li><p>region:<span id="region"></span></p> </li>
-                <li><p>subregion:<span id="subregion"></span></p> </li>
-                <li><p>capital: <span id="capital"></span></p> </li>
-                <li><p>topLevelDomain: <span id="topLevelDomain"></span></p> </li>
-                <li><p>currencies: <span id="currencies"></span></p> </li>
-                <li><p>languages: <span id="languages"></span></p> </li>
+                <li><p><b>nativeName</b> <span id="nativeName"></span></p> </li>
+                <li><p><b>Population:</b> <span id="Population"></span></p> </li>
+                <li><p><b>region:</b><span id="region"></span></p> </li>
+                <li><p><b>subregion:</b><span id="subregion"></span></p> </li>
+                <li><p><b>capital:</b> <span id="capital"></span></p> </li>
+                <li><p><b>topLevelDoarticle:</b> <span id="topLevelDomain"></span></p> </li>
+                <li><p><b>currencies:</b> <span id="currencies"></span></p> </li>
+                <li><p><b>languages:</b> <span id="languages"></span></p> </li>
             </ul>
             <div id="borders-container">
-                <p> borders: <span id="borders"></span></p>
+                <span id="borders_title"><b>borders&nbsp;country</b></span>
+                <span id="borders"><!--DATA--></span>
             </div>
         </section>
-    </main>
+    </article>
 </body>
 </html>

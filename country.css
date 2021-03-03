@@ -2,42 +2,151 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+    text-decoration: none;
 }
-main{
+a, a:visited, a::selection, a:focus, a:visited{color: black;}
+
+/*HEADER*/
+
+header{
+    height: 80px;
     display: flex;
-    justify-content: space-around;
+    padding: 0px 75px;
+    justify-content: space-between;
+    background: white;
+    box-shadow: 0 0 10px hsl(0, 0%, 90%);
+    align-items: center;
 }
-section{
+header h1{/*Encabezado*/
+    font-size: 24px;
+}
+button{/*darkMode*/
+    height: 100%;
+    border: none;
+    background:none;
+    color: black;
+    font-weight: 600;
+    font-size: 16px;
+}
+button:focus{
+    outline: none;
+}
+
+/*NAV*/
+nav > div {
     width: 50%;
-    display: flex;
-    flex-direction: column;
 }
- 
-#flagAndButton{
-    width: 560px;
+nav > div > div {
+    width: 80%;
     margin: auto;
 }
 #volverAtras{
     width: 100px;
+    box-shadow: 0 0 10px hsl(0, 0%, 90%);
     height: 40px;
     margin: 80px 0px 80px 0px;
+    cursor: pointer;
 }
-img{
-    width:100%;
+
+/*SECCION PRINCIPAL (BANDERA Y DATOS)*/
+article{
+    display: flex;
+    justify-content: space-around;
 }
-#nameAndInfo{
-    margin-top: calc(80px + 80px + 40px);
+
+/*SECCION IZQUIERA BANDERA*/
+figure{
+    width: 50%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
-h1{
+figure img{
+    width: 80%;
+}
+
+/*SECCION DERECHA INFORMACION*/
+section{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/*NOMBRE DEL PAIS*/
+#name-container{
+    display: flex;
+    align-items: center;
+}
+#nombre{
     font-size: 32px;
     font-weight: 800;
+    padding: 20px 40px;
 }
+
+/*INFORMACION*/
 ul{
+    padding:0 40px;
     list-style: none;
     display: grid;
     grid-template-columns: 1fr 1fr;
+
 }
+li{
+    padding: 5px;
+}
+
+/*PAISES LIMITROFES*/
 #borders-container{
-    border: 1px solid black;
-    height: 100px;
+    padding:35px 40px;
+    display: flex;
+    align-items: center;
+}
+#border{
+    width: 100px;
+    height: 30px;
+    box-shadow: 0 0 10px hsl(0, 0%, 90%);
+    margin-right: 10px;
+    cursor: pointer;
+}
+#borders_title{
+    margin-right: 10px;
+}
+
+@media (max-width:900px){
+    article{
+        flex-direction: column;
+    }
+    section, figure{
+        width: 100%;
+    }
+    figure img{
+        width: calc(100% - 80px);
+        margin: auto;
+    }
+    #volverAtras{
+        margin: 40px 0;
+    }
+}
+
+@media (max-width:500px){
+    figure img{
+        width: calc(100% - 80px);
+    }
+    #volverAtras{
+        margin: 20px 0;
+    }
+    ul{
+        grid-template-columns: 1fr;
+    }
+    #borders-container{
+        flex-direction: column;
+    }
+    #borders-container span{
+        justify-content: flex-start;  
+    }
+    #borders_title{
+        width: 100%;
+    }
 }
